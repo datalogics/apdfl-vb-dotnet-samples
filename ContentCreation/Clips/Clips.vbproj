@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Adobe.PDF.Library.LM.NET" Version="18.34.0" />
+    <PackageReference Include="Adobe.PDF.Library.LM.NET" Version="18.*" />
   </ItemGroup>
 
 </Project>
