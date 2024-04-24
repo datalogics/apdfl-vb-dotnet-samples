@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+**/bin/*
+**/obj/*
+
+# Project files
+**/.vs/*
+**/*.sln
