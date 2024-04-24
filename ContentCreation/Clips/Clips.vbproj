@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <NativeLibs Remove="Clips.vb" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Adobe.PDF.Library.LM.NET" Version="18.*" />
   </ItemGroup>
 
