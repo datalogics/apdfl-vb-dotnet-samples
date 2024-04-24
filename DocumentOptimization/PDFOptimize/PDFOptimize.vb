@@ -10,11 +10,11 @@ Imports System
 ' content that can't be assumed is safe to be removed.  However you can fine tune the optimization
 ' to suit your applications needs and drop such content to achieve better compression if you already
 ' know it's unnecessary.
-' 
-' 
+'
+'
 ' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
 '
-'/
+'
 Namespace PDFOptimize
     Module Optimize
         Sub Main(args As String())
