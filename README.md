@@ -28,11 +28,11 @@ Change to the directory of the program you want to work with. Here is an example
 
 Build a sample project file using the **Debug** configuration using the **dotnet** program:
 
-```dotnet build -c Debug ./RasterizePage.csproj```
+```dotnet build -c Debug ./RasterizePage.vbproj```
 
 If you want to build for **Release**, use this command syntax instead:
 
-```dotnet build -c Release ./RasterizePage.csproj```
+```dotnet build -c Release ./RasterizePage.vbproj```
 
 Change to the directory your sample built its executable to:
 
