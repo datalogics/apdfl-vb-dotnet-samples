@@ -5,11 +5,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Adobe.PDF.Library.LM.NET" Version="18.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../../_Common/ExtractText.vb" Link="ExtractText.vb" />
   </ItemGroup>
 
 </Project>
