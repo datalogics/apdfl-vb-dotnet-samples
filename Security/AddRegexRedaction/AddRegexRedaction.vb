@@ -1,27 +1,22 @@
-Imports System
-Imports System.Collections.Generic
 Imports Datalogics.PDFL
 
- '
- ' This sample demonstrates using the DocTextFinder to find examples of a specific phrase in a PDF
- ' document that matches a user-supplied regular expression. When the sample finds the text it
- ' will redact the phrase from the output document.
- '
- ' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
- '
- '
+'
+' This sample demonstrates using the DocTextFinder to find examples of a specific phrase in a PDF
+' document that matches a user-supplied regular expression. When the sample finds the text it
+' will redact the phrase from the output document.
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+'
+'
 Namespace AddRegexRedaction
-
     Module AddRegexRedaction
-    
-        Sub Main(args as String())
-        
+        Sub Main(args As String())
             Console.WriteLine("AddRegexRedaction Sample:")
 
-            Using (New Library())
+            Using New Library()
                 Console.WriteLine("Initialized the library.")
 
-                Dim sInput As String = "AddRegexRedaction.pdf"
+                Dim sInput As String = Library.ResourceDirectory + "Sample_Input/AddRegexRedaction.pdf"
                 Dim sOutput1 As String = "AddRegexRedaction-out.pdf"
                 Dim sOutput2 As String = "AddRegexRedaction-out-applied.pdf"
 
@@ -92,5 +87,5 @@ Namespace AddRegexRedaction
                 End Using
             End Using
         End Sub
-        End Module
+    End Module
 End Namespace

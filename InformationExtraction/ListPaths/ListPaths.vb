@@ -1,5 +1,3 @@
-Imports System
-Imports System.Windows
 Imports Datalogics.PDFL
 
 '

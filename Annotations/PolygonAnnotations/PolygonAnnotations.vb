@@ -1,13 +1,19 @@
-Imports System
-Imports System.Collections.Generic
 Imports Datalogics.PDFL
+
+'
+'
+' This program generates a PDF output file with a polygon shape (a triangle) as an annotation to the file.
+' The program defines the vertices for the outlines of the annotation, And the line And fill colors.
+'
+' Copyright(c) 2007-204, Datalogics, Inc. All rights reserved.
+
+'
 
 Namespace PolygonAnnotations
     Class PolygonAnnotations
         Shared Sub Main(args As String())
             Console.WriteLine("PolygonAnnotation Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using (New Library())
                 Console.WriteLine("Initialized the library.")
 

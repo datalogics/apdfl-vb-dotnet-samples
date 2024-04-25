@@ -1,5 +1,16 @@
-Imports System
 Imports Datalogics.PDFL
+
+'
+' This sample demonstrates how to change the color of hyperlink text (usually blue).
+'
+' The program works by identifying text in a PDF file that Is associated with hyperlinks.
+' Each link appears as a rectangle layer in the PDF file; ChangeLinkColors identifies these
+' rectangles, And then finds the text that lines up within these rectangles And changes the
+' color of each character that Is a part of the hyperlink.
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+'
+'
 
 Namespace ChangeLinkColors
     Module ChangeLinkColors

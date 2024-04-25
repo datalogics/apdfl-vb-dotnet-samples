@@ -1,14 +1,12 @@
-Imports System
-Imports System.Collections.Generic
 Imports Datalogics.PDFL
 
- '
- ' The sample uses an image as input which will be processed by the optical recognition engine.
- ' We will then place the image and the processed text in an output pdf
- ' 
- ' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
- '
- '/
+'
+' The sample uses an image as input which will be processed by the optical recognition engine.
+' We will then place the image and the processed text in an output pdf
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+'
+'/
 
 Namespace AddTextToImage
     Module AddTextToImage

@@ -1,13 +1,19 @@
-Imports System
-Imports System.Collections.Generic
 Imports Datalogics.PDFL
+
+'
+'
+' This sample creates And adds a New Ink annotation to a PDF document. An Ink annotation Is a freeform line,
+' similar to what you would create with a pen, Or with a stylus on a mobile device.
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+'
+'
 
 Namespace InkAnnotations
     Class InkAnnotations
         Shared Sub Main()
             Console.WriteLine("InkAnnotations Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using (New Library())
                 Console.WriteLine("Initialized the library.")
 
@@ -80,7 +86,6 @@ Namespace InkAnnotations
                 Dim scribbleToGet As IList(Of Point) = inkAnnot.GetScribble(0)
                 For i As Integer = 0 To scribbleToGet.Count - 1
                     Console.WriteLine($"Scribble 0, point{i} : {scribbleToGet(i)}")
-
                 Next
 
                 ' Get and display the points in ink annotation 1
@@ -88,7 +93,6 @@ Namespace InkAnnotations
                 scribbleToGet = inkAnnot.GetScribble(1)
                 For i As Integer = 0 To scribbleToGet.Count - 1
                     Console.WriteLine($"Scribble 1, point{i} : {scribbleToGet(i)}")
-
                 Next
 
                 ' Let's set the color and then ask the ink annotation to generate an appearance stream
