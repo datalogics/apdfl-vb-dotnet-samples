@@ -1,5 +1,3 @@
-Imports System
-Imports System.Collections.Generic
 Imports System.Text.Json.Serialization
 Imports Datalogics.PDFL
 
@@ -66,7 +64,7 @@ Namespace ExtractTextNameSpace
     End Class
 
     Public Class ExtractText
-        Inherits IDisposable
+        Implements IDisposable
         Property doc As Document
 
         Property wordFinder As WordFinder
@@ -79,7 +77,7 @@ Namespace ExtractTextNameSpace
             wordFinder = New WordFinder(doc, WordFinderVersion.Latest, wordConfig)
         End Sub
 
-        Sub Dispose()
+        Sub Dispose() Implements IDisposable.Dispose
             wordFinder.Dispose()
         End Sub
 
@@ -166,7 +164,7 @@ Namespace ExtractTextNameSpace
             Next
             ' Release requested WordList
             For wordnum As Integer = 0 To pageWords.Count - 1
-                pageWords[wordnum].Dispose()
+                pageWords(wordnum).Dispose()
             Next
             Return resultTextAndDetails
         End Function
@@ -183,7 +181,7 @@ Namespace ExtractTextNameSpace
 
                 Dim fields_entry As PDFObject = form_root.Get("Fields")
                 If fields_entry.GetType() Is GetType(PDFArray) Then
-                    Dim fields As PDFArray = DirectCast(form_entry, PDFDict)
+                    Dim fields As PDFArray = DirectCast(form_entry, PDFArray)
                     For fieldIndex As Integer = 0 To fields.Length - 1
                         Dim field_entry As PDFObject = fields.Get(fieldIndex)
                         EnumerateAcroFormField(field_entry, "", resultAcroFormText)
@@ -221,7 +219,7 @@ Namespace ExtractTextNameSpace
                 If (prefix = "") Then
                     field_name = name_part
                 Else
-                    /' Concatenate field name for 'Kids'
+                    ' Concatenate field name for 'Kids'
                     field_name = String.Format("{0}.{1}", prefix, name_part)
                 End If
 
@@ -240,7 +238,6 @@ Namespace ExtractTextNameSpace
                 If entry.GetType() Is GetType(PDFName) Then
                     Dim field_type_name As PDFName = DirectCast(entry, PDFName)
                     If field_type_name.Value = "Tx" Then
-                                                                {
                         field_text = GetAcroFormFieldText(field)
                         Dim textObject As AcroFormTextFieldObject = New AcroFormTextFieldObject()
                         textObject.AcroFormFieldName = field_name
@@ -261,7 +258,7 @@ Namespace ExtractTextNameSpace
                 Dim page As Page = doc.GetPage(pageNum)
                 For annotNum As Integer = 0 To page.NumAnnotations - 1
                     Dim annot As Annotation = page.GetAnnotation(annotNum)
-                    If annot.Subtype = "Text" Or annot.Subtype == "FreeText" Then
+                    If annot.Subtype = "Text" Or annot.Subtype = "FreeText" Then
                         Dim textObject As AnnotationTextObject = New AnnotationTextObject()
                         textObject.AnnotationType = annot.GetType().Name
                         textObject.AnnotationText = annot.Contents
