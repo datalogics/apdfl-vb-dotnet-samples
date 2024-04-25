@@ -1,13 +1,11 @@
-Imports System
 Imports System.Text
-Imports System.Windows
 Imports System.Xml
 Imports Datalogics.PDFL
 
 '
 '
 ' This sample shows how to view And edit metadata for a PDF document. The metadata values appear on the Properties
-' window in a PDF Viwer. Click FileProperties, And then click Additional Metadata.
+' window in a PDF Viewer.
 '
 ' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 '

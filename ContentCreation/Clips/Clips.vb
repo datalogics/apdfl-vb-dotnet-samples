@@ -1,12 +1,11 @@
 Imports Datalogics.PDFL
-Imports System
 
 '
-' 
+'
 ' This sample demonstrates working with Clip objects. A clipping path Is used to edit the borders of a graphics object.
 '
-' 
-' Copyright (c) 2007-2023, Datalogics, Inc. All rights reserved.
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 '
 '/
 Namespace Clips

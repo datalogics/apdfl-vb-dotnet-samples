@@ -1,12 +1,18 @@
-Imports System
 Imports Datalogics.PDFL
+
+'
+'
+'This sample demonstrates how To find And describe annotations In an existing PDF document.
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+'
+'
 
 Namespace Annotations
     Class Annotations
         Shared Sub Main(args As String())
             Console.WriteLine("Annotations Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using (New Library())
                 Console.WriteLine("Initialized the library.")
 

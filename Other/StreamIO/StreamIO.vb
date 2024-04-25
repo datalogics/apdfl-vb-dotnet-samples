@@ -1,21 +1,19 @@
-Imports System
 Imports System.IO
 Imports Datalogics.PDFL
 
-
- '
- '
- ' Run this program to extract content from a PDF file from a stream. The system will prompt you to enter
- ' the name of a PDF file to use for input. The program generates two output PDF files.
- '
- ' A stream is a string of bytes of any length, embedded in a PDF document with a dictionary
- ' that is used to interpret the values in the stream. 
- '
- ' This program is similar to ImagefromStream, but in this example the PDF file streams hold text.
- '
- ' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
- '
- '
+'
+'
+' Run this program to extract content from a PDF file from a stream. The system will prompt you to enter
+' the name of a PDF file to use for input. The program generates two output PDF files.
+'
+' A stream is a string of bytes of any length, embedded in a PDF document with a dictionary
+' that is used to interpret the values in the stream.
+'
+' This program is similar to ImageFromStream, but in this example the PDF file streams hold text.
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+'
+'
 Namespace StreamIO
     Class StreamIOSample
         Sub ReadFromStream(path As String, output As String)
@@ -91,7 +89,7 @@ Namespace StreamIO
             Console.WriteLine("StreamIO Sample:")
 
             Using New Library()
-                Dim sInput As String = "sample.pdf"
+                Dim sInput As String = Library.ResourceDirectory + "Sample_Input/sample.pdf"
                 Dim sOutput1 As String = "StreamIO-out1.pdf"
                 Dim sOutput2 As String = "StreamIO-out2.pdf"
 

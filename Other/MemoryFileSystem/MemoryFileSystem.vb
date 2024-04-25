@@ -1,18 +1,17 @@
-Imports System
 Imports Datalogics.PDFL
 
- '
- '
- ' This sample demonstrates how to initialize and use RAM memory instead of the local
- ' hard disk to save temporary files, in order to save processing time.
- '
- ' The program sets the DefaultTempStore property of the Adobe PDF Library object to
- ' TempStoreType.Memory. The program can also set a maximum amount of RAM to use by
- ' applying a value to the DefaultTempStoreMemLimit property.
- '
- ' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
- '
- '
+'
+'
+' This sample demonstrates how to initialize and use RAM memory instead of the local
+' hard disk to save temporary files, in order to save processing time.
+'
+' The program sets the DefaultTempStore property of the Adobe PDF Library object to
+' TempStoreType.Memory. The program can also set a maximum amount of RAM to use by
+' applying a value to the DefaultTempStoreMemLimit property.
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+'
+'
 Namespace MemoryFileSystem
     Module MemoryFileSystem
         Sub Main(args as String())

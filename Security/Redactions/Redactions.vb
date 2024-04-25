@@ -1,15 +1,13 @@
-Imports System
-Imports System.Collections.Generic
 Imports Datalogics.PDFL
 
- '
- '
- ' This sample shows how to redact a PDF document. The program opens an input PDF, searches for
- ' specific words using the Adobe PDF Library WordFinder, and then removes these words from the text.
- '
- ' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
- '
- '
+'
+'
+' This sample shows how to redact a PDF document. The program opens an input PDF, searches for
+' specific words using the Adobe PDF Library WordFinder, and then removes these words from the text.
+'
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+'
+'
 Namespace Redactions
     Module Redactions
         Sub Main(args As String())
