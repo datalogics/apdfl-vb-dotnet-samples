@@ -176,12 +176,12 @@ Namespace ExtractTextNameSpace
             Dim resultAcroFormText As List(Of AcroFormTextFieldObject) = New List(Of AcroFormTextFieldObject)
 
             Dim form_entry As PDFObject = doc.Root.Get("AcroForm")
-            If form_entry.GetType() Is GetType(PDFDict) Then
+            If TypeOf form_entry Is PDFDict Then
                 Dim form_root As PDFDict = DirectCast(form_entry, PDFDict)
 
                 Dim fields_entry As PDFObject = form_root.Get("Fields")
-                If fields_entry.GetType() Is GetType(PDFArray) Then
-                    Dim fields As PDFArray = DirectCast(form_entry, PDFArray)
+                If TypeOf fields_entry Is PDFArray Then
+                    Dim fields As PDFArray = DirectCast(fields_entry, PDFArray)
                     For fieldIndex As Integer = 0 To fields.Length - 1
                         Dim field_entry As PDFObject = fields.Get(fieldIndex)
                         EnumerateAcroFormField(field_entry, "", resultAcroFormText)
@@ -194,7 +194,7 @@ Namespace ExtractTextNameSpace
         Function GetAcroFormFieldText(field As PDFDict)
             Dim entry As PDFObject = field.Get("V")
             Dim svalue As String = ""
-            If (entry.GetType() Is GetType(PDFString)) Then
+            If (TypeOf entry Is PDFString) Then
                 Dim value As PDFString = DirectCast(entry, PDFString)
                 svalue = value.Value
             End If
@@ -207,10 +207,10 @@ Namespace ExtractTextNameSpace
             Dim field_text As String
             Dim entry As PDFObject
 
-            If field_entry.GetType() Is GetType(PDFDict) Then
+            If TypeOf field_entry Is PDFDict Then
                 Dim field As PDFDict = DirectCast(field_entry, PDFDict)
                 entry = DirectCast(field.Get("T"), PDFString)
-                If entry.GetType() Is GetType(PDFString) Then
+                If TypeOf entry Is PDFString Then
                     Dim t As PDFString = DirectCast(entry, PDFString)
                     name_part = t.Value
                 Else
@@ -225,7 +225,7 @@ Namespace ExtractTextNameSpace
 
                 ' Recursively handle 'Kids'
                 entry = field.Get("Kids")
-                If entry.GetType() Is GetType(PDFArray) Then
+                If TypeOf entry Is PDFArray Then
                     Dim kids As PDFArray = DirectCast(entry, PDFArray)
                     For kidIndex As Integer = 0 To kids.Length - 1
                         Dim kid_entry As PDFObject = kids.Get(kidIndex)
@@ -235,7 +235,7 @@ Namespace ExtractTextNameSpace
 
                 ' We are at an end-node
                 entry = field.Get("FT")
-                If entry.GetType() Is GetType(PDFName) Then
+                If TypeOf entry Is PDFName Then
                     Dim field_type_name As PDFName = DirectCast(entry, PDFName)
                     If field_type_name.Value = "Tx" Then
                         field_text = GetAcroFormFieldText(field)
