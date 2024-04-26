@@ -1,11 +1,8 @@
-Imports System
-Imports System.Collections.Generic
 Imports Datalogics.PDFL
-
 
 ''' This sample demonstrates drawing a list of grayscale separations from a PDF file to multi-paged TIFF file.
 '''
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace GetSeparatedImages
     Class GetSeparatedImages
@@ -23,7 +20,7 @@ Namespace GetSeparatedImages
                 sOutput = args(1)
             End If
 
-            Console.WriteLine("Input file: " & sInput & ", will write to " & sOutput)
+            Console.WriteLine("Input file: " & sInput + ", will write to " & sOutput)
 
             Using library As New Library()
                 Dim doc As New Document(sInput)

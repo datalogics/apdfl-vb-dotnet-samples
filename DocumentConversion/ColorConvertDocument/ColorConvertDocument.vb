@@ -69,7 +69,6 @@ Namespace ColorConvertDocument
                 'Render Intent and Device Color Profiles can also be set here. 
                 Dim parms As ColorConvertParams = New ColorConvertParams(colorConvActions)
 
-                ' ReSharper disable once UnusedVariable
                 Dim success As Boolean = doc.ColorConvertPages(parms)
 
                 doc.Save(SaveFlags.Full Or SaveFlags.Compressed, sOutput)

@@ -144,7 +144,6 @@ Namespace ExtendedGraphicStates
         Shared Sub Main(args As String())
             Console.WriteLine("ExtendedGraphicStates Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Console.WriteLine("Initialized the library.")
 

@@ -1,5 +1,3 @@
-Imports System
-Imports System.Net.Mime.MediaTypeNames
 Imports System.Runtime.InteropServices
 Imports Datalogics.PDFL
 Imports SkiaSharp
@@ -13,14 +11,13 @@ Imports SkiaSharp
 ''' 
 ''' This program Is similar to StreamIO.
 
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace ImageFromStream
     Class ImageFromStream
         Shared Sub Main(args As String())
             Console.WriteLine("ImageFromStream Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using (New Library())
                 Console.WriteLine("Initialized the library.")
 

@@ -15,7 +15,6 @@ Namespace LaunchActions
     Class LaunchActions
         Shared Sub Main(args As String())
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Dim sInput As String = Library.ResourceDirectory & "Sample_Input/ducky.pdf"
                 Dim sOutput As String = "LaunchActions-out.pdf"

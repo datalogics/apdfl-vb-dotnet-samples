@@ -1,8 +1,6 @@
 Imports System
 Imports Datalogics.PDFL
 
-
-
  ''' This sample shows how to add a QR barcode to a PDF page
  '''
  ''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.

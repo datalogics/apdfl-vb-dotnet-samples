@@ -11,7 +11,7 @@ Imports Datalogics.PDFL
 ' know it's unnecessary.
 '
 '
-' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 '
 '
 Namespace PDFOptimize

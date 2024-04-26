@@ -20,7 +20,6 @@ Namespace FlattenTransparency
         Shared Sub Main(args As String())
             Console.WriteLine("FlattenTransparency sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Dim sInput1 As String = Library.ResourceDirectory & "Sample_Input/trans_1page.pdf"
                 Dim sOutput1 As String = "FlattenTransparency-out1.pdf"

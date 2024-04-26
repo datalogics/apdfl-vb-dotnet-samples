@@ -1,7 +1,4 @@
-Imports System
 Imports Datalogics.PDFL
-
-
 
 ''' This sample demonstrates how to find and resample images within a PDF document. The images are
 ''' then put back into the PDF document with a new resolution.
@@ -10,9 +7,7 @@ Imports Datalogics.PDFL
 ''' used to reduce the resolution of an image or series of images, to make them smaller. As a result
 ''' the process makes the PDF document smaller.
 '''
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
-
-
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace ImageResampling
     Friend Class ImageResampling
@@ -53,7 +48,7 @@ Namespace ImageResampling
 
         Shared Sub Main(args As String())
             Console.WriteLine("ImageResampling Sample:")
-            ' ReSharper disable once UnusedVariable
+
             Using library As New Library()
                 Console.WriteLine("Initialized the library.")
                 Dim sInput As String = Library.ResourceDirectory & "Sample_Input/ducky.pdf"

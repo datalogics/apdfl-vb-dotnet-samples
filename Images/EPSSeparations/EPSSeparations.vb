@@ -1,20 +1,15 @@
-Imports System
-Imports System.Collections.Generic
 Imports Datalogics.PDFL
-
-
 
 ''' This sample demonstrates working with color separations with Encapsulated PostScript (EPS) graphics
 ''' from a PDF file.
 '''
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace EPSSeparations
     Class EPSSeparations
         Shared Sub Main(args As String())
             Console.WriteLine("EPS Separations Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Console.WriteLine("Initialized the library.")
 
