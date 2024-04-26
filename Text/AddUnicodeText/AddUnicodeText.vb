@@ -34,33 +34,33 @@ Namespace AddUnicodeText
                 Dim ts As TextState = New TextState()
 
                 Dim strings As New List(Of String) From {
-                    "Chinese (Mandarin) - \u4e16\u754c\u4eba\u6743\u5ba3\u8a00",
-                    "Japanese - \u300e\u4e16\u754c\u4eba\u6a29\u5ba3\u8a00\u300f",
-                    "French - \u0044\u00e9\u0063\u006c\u0061\u0072\u0061\u0074\u0069\u006f\u006e" +
-                            "\u0020\u0075\u006e\u0069\u0076\u0065\u0072\u0073\u0065\u006c\u006c\u0065\u0020\u0064" +
-                            "\u0065\u0073\u0020\u0064\u0072\u006f\u0069\u0074\u0073\u0020\u0064\u0065\u0020\u006c" +
-                            "\u2019\u0068\u006f\u006d\u006d\u0065",
-                    "Korean - \uc138\u0020\uacc4\u0020\uc778\u0020\uad8c\u0020\uc120\u0020\uc5b8",
-                    "English - \u0055\u006e\u0069\u0076\u0065\u0072\u0073\u0061\u006c\u0020\u0044" +
-                            "\u0065\u0063\u006c\u0061\u0072\u0061\u0074\u0069\u006f\u006e\u0020\u006f\u0066\u0020" +
-                            "\u0048\u0075\u006d\u0061\u006e\u0020\u0052\u0069\u0067\u0068\u0074\u0073",
-                    "Greek - \u039f\u0399\u039a\u039f\u03a5\u039c\u0395\u039d\u0399\u039a\u0397\u0020" +
-                            "\u0394\u0399\u0391\u039a\u0397\u03a1\u03a5\u039e\u0397\u0020\u0393\u0399\u0391\u0020" +
-                            "\u03a4\u0391\u0020\u0391\u039d\u0398\u03a1\u03a9\u03a0\u0399\u039d\u0391\u0020\u0394" +
-                            "\u0399\u039a\u0391\u0399\u03a9\u039c\u0391\u03a4\u0391",
-                    "Russian - \u0412\u0441\u0435\u043e\u0431\u0449\u0430\u044f\u0020\u0434\u0435" +
-                            "\u043a\u043b\u0430\u0440\u0430\u0446\u0438\u044f\u0020\u043f\u0440\u0430\u0432\u0020" +
-                            "\u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0430"
+                    "Chinese (Mandarin) - " + Convert.ToChar(&H4E16) + Convert.ToChar(&H754C) + Convert.ToChar(&H4EBA) + Convert.ToChar(&H6743) + Convert.ToChar(&H5BA3) + Convert.ToChar(&H8A00),
+                    "Japanese - " + Convert.ToChar(&H300E) + Convert.ToChar(&H4E16) + Convert.ToChar(&H754C) + Convert.ToChar(&H4EBA) + Convert.ToChar(&H6A29) + Convert.ToChar(&H5BA3) + Convert.ToChar(&H8A00) + Convert.ToChar(&H300F),
+                    "French - " + Convert.ToChar(&H44) + Convert.ToChar(&HE9) + Convert.ToChar(&H63) + Convert.ToChar(&H6C) + Convert.ToChar(&H61) + Convert.ToChar(&H72) + Convert.ToChar(&H61) + Convert.ToChar(&H74) + Convert.ToChar(&H69) + Convert.ToChar(&H6F) + Convert.ToChar(&H6E) +
+                            Convert.ToChar(&H20) + Convert.ToChar(&H75) + Convert.ToChar(&H6E) + Convert.ToChar(&H69) + Convert.ToChar(&H76) + Convert.ToChar(&H65) + Convert.ToChar(&H72) + Convert.ToChar(&H73) + Convert.ToChar(&H65) + Convert.ToChar(&H6C) + Convert.ToChar(&H6C) + Convert.ToChar(&H65) + Convert.ToChar(&H20) + Convert.ToChar(&H64) +
+                            Convert.ToChar(&H65) + Convert.ToChar(&H73) + Convert.ToChar(&H20) + Convert.ToChar(&H64) + Convert.ToChar(&H72) + Convert.ToChar(&H6F) + Convert.ToChar(&H69) + Convert.ToChar(&H74) + Convert.ToChar(&H73) + Convert.ToChar(&H20) + Convert.ToChar(&H64) + Convert.ToChar(&H65) + Convert.ToChar(&H20) + Convert.ToChar(&H6C) +
+                            Convert.ToChar(&H2019) + Convert.ToChar(&H68) + Convert.ToChar(&H6F) + Convert.ToChar(&H6D) + Convert.ToChar(&H6D) + Convert.ToChar(&H65),
+                    "Korean - " + Convert.ToChar(&HC138) + Convert.ToChar(&H20) + Convert.ToChar(&HACC4) + Convert.ToChar(&H20) + Convert.ToChar(&HC778) + Convert.ToChar(&H20) + Convert.ToChar(&HAD8C) + Convert.ToChar(&H20) + Convert.ToChar(&HC120) + Convert.ToChar(&H20) + Convert.ToChar(&HC5B8) +
+                    "English - " + Convert.ToChar(&H55) + Convert.ToChar(&H6E) + Convert.ToChar(&H69) + Convert.ToChar(&H76) + Convert.ToChar(&H65) + Convert.ToChar(&H72) + Convert.ToChar(&H73) + Convert.ToChar(&H61) + Convert.ToChar(&H6C) + Convert.ToChar(&H20) + Convert.ToChar(&H44) +
+                            Convert.ToChar(&H65) + Convert.ToChar(&H63) + Convert.ToChar(&H6C) + Convert.ToChar(&H61) + Convert.ToChar(&H72) + Convert.ToChar(&H61) + Convert.ToChar(&H74) + Convert.ToChar(&H69) + Convert.ToChar(&H6F) + Convert.ToChar(&H6E) + Convert.ToChar(&H20) + Convert.ToChar(&H6F) + Convert.ToChar(&H66) + Convert.ToChar(&H20) +
+                            Convert.ToChar(&H48) + Convert.ToChar(&H75) + Convert.ToChar(&H6D) + Convert.ToChar(&H61) + Convert.ToChar(&H6E) + Convert.ToChar(&H20) + Convert.ToChar(&H52) + Convert.ToChar(&H69) + Convert.ToChar(&H67) + Convert.ToChar(&H68) + Convert.ToChar(&H74) + Convert.ToChar(&H73),
+                    "Greek - " + Convert.ToChar(&H39F) + Convert.ToChar(&H399) + Convert.ToChar(&H39A) + Convert.ToChar(&H39F) + Convert.ToChar(&H3A5) + Convert.ToChar(&H39C) + Convert.ToChar(&H395) + Convert.ToChar(&H39D) + Convert.ToChar(&H399) + Convert.ToChar(&H39A) + Convert.ToChar(&H397) + Convert.ToChar(&H20) +
+                            Convert.ToChar(&H394) + Convert.ToChar(&H399) + Convert.ToChar(&H391) + Convert.ToChar(&H39A) + Convert.ToChar(&H397) + Convert.ToChar(&H3A1) + Convert.ToChar(&H3A5) + Convert.ToChar(&H39E) + Convert.ToChar(&H397) + Convert.ToChar(&H20) + Convert.ToChar(&H393) + Convert.ToChar(&H399) + Convert.ToChar(&H391) + Convert.ToChar(&H20) +
+                            Convert.ToChar(&H3A4) + Convert.ToChar(&H391) + Convert.ToChar(&H20) + Convert.ToChar(&H391) + Convert.ToChar(&H39D) + Convert.ToChar(&H398) + Convert.ToChar(&H3A1) + Convert.ToChar(&H3A9) + Convert.ToChar(&H3A0) + Convert.ToChar(&H399) + Convert.ToChar(&H39D) + Convert.ToChar(&H391) + Convert.ToChar(&H20) + Convert.ToChar(&H394) +
+                            Convert.ToChar(&H399) + Convert.ToChar(&H39A) + Convert.ToChar(&H391) + Convert.ToChar(&H399) + Convert.ToChar(&H3A9) + Convert.ToChar(&H39C) + Convert.ToChar(&H391) + Convert.ToChar(&H3A4) + Convert.ToChar(&H391),
+                    "Russian - " + Convert.ToChar(&H412) + Convert.ToChar(&H441) + Convert.ToChar(&H435) + Convert.ToChar(&H43E) + Convert.ToChar(&H431) + Convert.ToChar(&H449) + Convert.ToChar(&H430) + Convert.ToChar(&H44F) + Convert.ToChar(&H20) + Convert.ToChar(&H434) + Convert.ToChar(&H435) +
+                            Convert.ToChar(&H43A) + Convert.ToChar(&H43B) + Convert.ToChar(&H430) + Convert.ToChar(&H440) + Convert.ToChar(&H430) + Convert.ToChar(&H446) + Convert.ToChar(&H438) + Convert.ToChar(&H44F) + Convert.ToChar(&H20) + Convert.ToChar(&H43F) + Convert.ToChar(&H440) + Convert.ToChar(&H430) + Convert.ToChar(&H432) + Convert.ToChar(&H20) +
+                            Convert.ToChar(&H447) + Convert.ToChar(&H435) + Convert.ToChar(&H43B) + Convert.ToChar(&H43E) + Convert.ToChar(&H432) + Convert.ToChar(&H435) + Convert.ToChar(&H43A) + Convert.ToChar(&H430)
                 }
 
                 Dim fonts As List(Of Font) = New List(Of Font)
                 Try
                     fonts.Add(New Font("Arial"))
                 Catch ex As ApplicationException
-                    If ex.Message.Equals("The specified font could not be found.") And
+                    If ex.Message.Equals("The specified font could Not be found.") And
                             System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux) And
                             Not System.IO.Directory.Exists("/usr/share/fonts/msttcore/") Then
-                        Console.WriteLine("Please install Microsoft Core Fonts on Linux first.")
+                        Console.WriteLine("Please install Microsoft Core Fonts On Linux first.")
                         Return
                     End If
                     Throw
