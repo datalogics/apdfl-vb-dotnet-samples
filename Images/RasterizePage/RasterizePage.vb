@@ -1,10 +1,7 @@
-Imports System
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports Datalogics.PDFL
 Imports SkiaSharp
-
-
 
 
 ''' This sample shows how to rasterize a page from a PDF document and save that page as an 
@@ -26,7 +23,7 @@ Imports SkiaSharp
 ''' 3. An output image file with content drawn from an unrotated PDF page, but that contains only the top half of
 '''    the original page.
 '''
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace RasterizePage
     Class RasterizePage
@@ -34,7 +31,6 @@ Namespace RasterizePage
 
             Console.WriteLine("RasterizePage Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Console.WriteLine("Initialized the library.")
 
@@ -103,7 +99,6 @@ Namespace RasterizePage
                     '
                     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-                    ' ReSharper disable once UnusedVariable
                     Dim halfImage As SKBitmap = CreateBitmapWithTopHalfOfPage(pg, $"{sOutput}-tophalf.jpg", SKEncodedImageFormat.Jpeg, ColorSpace.DeviceRGBA)
                 Else
                     'Known issue in JPEG encoding in SkiaSharp v2.88.6: https://github.com/mono/SkiaSharp/issues/2643
@@ -127,7 +122,6 @@ Namespace RasterizePage
                     '
                     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-                    ' ReSharper disable once UnusedVariable
                     Dim halfImage As SKBitmap = CreateBitmapWithTopHalfOfPage(pg, $"{sOutput}-tophalf.png", SKEncodedImageFormat.Png, ColorSpace.DeviceRGBA)
                 End If
             End Using

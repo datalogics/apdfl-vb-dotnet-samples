@@ -1,19 +1,16 @@
-Imports System
-Imports System.Collections.Generic
-Imports SkiaSharp
-Imports Datalogics.PDFL
 Imports System.IO
+Imports Datalogics.PDFL
+Imports SkiaSharp
 
 ''' This sample demonstrates for drawing a list of grayscale separations from a PDF file.
 ''' 
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace DrawSeparations
     Class DrawSeparations
         Shared Sub Main(args As String())
             Console.WriteLine("DrawSeparations Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using (New Library())
                 Console.WriteLine("Initialized the library.")
 

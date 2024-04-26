@@ -1,7 +1,3 @@
-Imports System
-'Imports System.Net.Mime.MediaTypeNames
-'Imports System.Reflection.Metadata
-Imports System.Security.AccessControl
 Imports Datalogics.PDFL
 
 
@@ -9,7 +5,7 @@ Imports Datalogics.PDFL
 ''' prompting you, And creates two PDF files, demonstrating how to import graphics from image files
 ''' into a PDF file. One of the PDF output files Is the result of graphics imported from a multi-page TIF file.
 '''
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace ImageImport
     ' In this scenario the Image object is used alone to create a
@@ -18,7 +14,6 @@ Namespace ImageImport
         Shared Sub Main(args As String())
             Console.WriteLine("Import Images Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using (New Library())
                 Console.WriteLine("Initialized the library.")
                 Dim doc As New Document()

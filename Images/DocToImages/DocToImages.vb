@@ -1,12 +1,10 @@
-Imports System
-Imports System.Collections.Generic
 Imports Datalogics.PDFL
 
 ''' This sample demonstrates how to convert a PDF document into a series of graphic image files,
-''' one per page. You can also create a multi-page TIFF file. This program requires that you enter 
+''' one per page. You can also create a multi-page TIFF file. This program requires that you enter
 ''' formatting values manually at the command line. 
 '''
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace DocToImages
 
@@ -844,9 +842,6 @@ Namespace DocToImages
                 Environment.Exit(1)
             End If
 
-
-
-            ' ReSharper disable once UnusedVariable
             Using library As New Library(options.getfontdirs())
                 Dim pdfdocument As Document = Nothing
                 Dim numpages As Integer = 0

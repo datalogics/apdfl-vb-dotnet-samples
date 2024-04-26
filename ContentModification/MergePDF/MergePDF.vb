@@ -14,7 +14,6 @@ Namespace MergePDF
         Shared Sub Main(args As String())
             Console.WriteLine("MergePDF Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Dim sInput1 As String = Library.ResourceDirectory & "Sample_Input/merge_pdf1.pdf"
                 Dim sInput2 As String = Library.ResourceDirectory & "Sample_Input/merge_pdf2.pdf"

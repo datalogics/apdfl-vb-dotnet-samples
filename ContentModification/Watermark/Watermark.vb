@@ -2,8 +2,6 @@ Imports System
 Imports Datalogics.PDFL
 
 
-
-
 ''' The Watermark sample program shows how to create a watermark And copy it to a New PDF file.
 ''' You could use this code to create a message to apply to PDF files you select, Like
 ''' “Confidential” Or “Draft Copy.” Or you might want to place a copyright statement over
@@ -17,7 +15,6 @@ Namespace Watermark
         Public Shared Sub Main(args As String())
             Console.WriteLine("Watermark Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Console.WriteLine("Initialized the library.")
 

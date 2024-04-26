@@ -15,7 +15,6 @@ Namespace AddCollection
         Shared Sub Main(args As String())
             Console.WriteLine("AddCollection Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Console.WriteLine("Initialized the library.")
 

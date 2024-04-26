@@ -15,7 +15,6 @@ Namespace [Action]
         Shared Sub Main(args As String())
             Console.WriteLine("Action Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Dim sOutput As String = "Action-out.pdf"
                 Console.WriteLine("Initialized the library.")

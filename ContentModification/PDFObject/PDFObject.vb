@@ -2,9 +2,6 @@ Imports System
 Imports Datalogics.PDFL
 
 
-
-
-
 ''' This sample demonstrates working with data objects in a PDF document. It examines the Objects and displays
 ''' information about them.  The sample extracts the dictionary for an object called URIAction and updates it using PDFObjects.
 ''' 
@@ -20,7 +17,6 @@ Namespace PDFObject
         Shared Sub Main(args As String())
             Console.WriteLine("PDFObject Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Dim sInput As String = Library.ResourceDirectory & "Sample_Input/sample_links.pdf"
                 Dim sOutput As String = "PDFObject-out.pdf"

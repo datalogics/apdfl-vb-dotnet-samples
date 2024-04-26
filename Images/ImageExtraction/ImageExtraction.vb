@@ -9,7 +9,7 @@ Imports SkiaSharp
 ''' images from the PDF file And copies them to a separate set of graphics files in the
 ''' same directory. Vector images, such as clip art, will Not be exported.
 '''
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007 - 2024, Datalogics, Inc. All rights reserved.
 
 Namespace ImageExtraction
     Class ImageExtraction

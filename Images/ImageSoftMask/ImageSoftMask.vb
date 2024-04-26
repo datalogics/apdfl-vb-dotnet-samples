@@ -1,23 +1,16 @@
-Imports System
 Imports Datalogics.PDFL
-
-
-
-
 
 ''' This sample demonstrates working with masking in PDF documents. Masking an image allows you to remove or 
 ''' change a feature, while a soft mask allows you to place an image on a page and define the level of 
 ''' transparency for that image.
 '''
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
-
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace ImageSoftMask
     Class ImageSoftMask
         Shared Sub Main(args As String())
             Console.WriteLine("Image Soft Mask sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Console.WriteLine("Initialized the library.")
 

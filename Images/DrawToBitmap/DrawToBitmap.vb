@@ -1,14 +1,11 @@
-Imports System
-Imports System.Collections.Generic
-Imports SkiaSharp
-Imports Datalogics.PDFL
 Imports System.IO
 Imports System.Runtime.InteropServices
-
+Imports Datalogics.PDFL
+Imports SkiaSharp
 
 ''' This program sample converts a PDF file to a series of image files.
 ''' 
-''' Copyright (c) 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
 
 Namespace DrawToBitmap
     ''' <summary>
@@ -166,7 +163,6 @@ Namespace DrawToBitmap
             Console.WriteLine("DrawToBitmap Sample")
 
             Try
-                ' ReSharper disable once UnusedVariable
                 Using library As New Library()
                     Console.WriteLine("Initialized the library.")
 
@@ -201,7 +197,6 @@ Namespace DrawToBitmap
 
                             Dim enableBlackPointCompensation As Boolean = True
 
-                            ' ReSharper disable once ConditionIsAlwaysTrueOrFalse
                             Using parms As DrawParams = ConstructDrawParams(matrix, pg.MediaBox, enableBlackPointCompensation)
                                 ' Demonstrate drawing to Bitmaps with params and OCGs
                                 ' Demonstrate drawing layers

@@ -18,7 +18,6 @@ Namespace UnderlinesAndHighlights
         Public Shared Sub Main(args As String())
             Console.WriteLine("UnderlinesAndHighlights Sample:")
 
-            ' ReSharper disable once UnusedVariable
             Using library As New Library()
                 Console.WriteLine("Initialized the library.")
 
