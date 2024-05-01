@@ -193,7 +193,7 @@ Namespace DrawToBitmap
                             End If
 
                             Dim matrix As New Matrix()
-                            matrix.Scale(scaleFactor, -scaleFactor).Translate(0, -ty)
+                            matrix = matrix.Scale(scaleFactor, -scaleFactor).Translate(0, -ty)
 
                             Dim enableBlackPointCompensation As Boolean = True
 

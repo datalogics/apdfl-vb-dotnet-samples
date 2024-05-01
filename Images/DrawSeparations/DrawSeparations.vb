@@ -47,7 +47,7 @@ Namespace DrawSeparations
                 ' Must invert the page to get from PDF with origin at lower left,
                 ' to a bitmap with the origin at upper right.
                 Dim matrix As New Matrix()
-                matrix.Scale(1, -1).Translate(-pg.MediaBox.Left, -pg.MediaBox.Top)
+                matrix = matrix.Scale(1, -1).Translate(-pg.MediaBox.Left, -pg.MediaBox.Top)
 
                 Dim parms As New DrawParams()
                 parms.Matrix = matrix
