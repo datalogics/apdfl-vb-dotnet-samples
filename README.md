@@ -17,6 +17,19 @@ Many of these sample programs automatically generate an output file or set of fi
 
 *(Note: that the Forms Extension product and samples are available by talking to Datalogics Sales.)*
 
+## Free trial & license activation
+
+To activate the free trial:
+1. Visit https://www.datalogics.com/pdf-sdk-free-trial to obtain an activation key.
+2. A prompt will appear on your console when executing Datalogics sample code.
+
+Alternatively, to use an activation key in code, the <em>LicenseKey</em> member of the <em>Library</em> class can be set to
+a valid activation key <b>prior</b> to instantiating the library.
+```
+    Library.LicenseKey = "xxxx-xxxx-xxxx-xxxx"
+    Using library As New Library()
+```
+
 ## Building and Running Samples
 *Samples can be built and run easily in an IDE such as Visual Studio 2022, Visual Studio 2022 for Mac, or VS Code.*
 
