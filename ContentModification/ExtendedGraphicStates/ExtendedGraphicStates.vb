@@ -44,6 +44,8 @@ Namespace ExtendedGraphicStates
             Dim gsText As New GraphicState()
             gsText.FillColor = New Color(0, 0, 1.0)
             Dim ts As New TextState()
+            Dim spaceFactor As Double = 18.0
+            Dim heightOffset As Double = height - 88.0
 
             For i As Integer = 0 To 15
                 Dim individualForegroundImage As Image = foregroundImage.Clone()
@@ -51,14 +53,20 @@ Namespace ExtendedGraphicStates
 
                 Dim gs As GraphicState = individualForegroundImage.GraphicState
                 individualForegroundImage.Scale(0.125, 0.125)
-                individualForegroundImage.Translate(800, 200 + height * (7 - i))
                 individualBackgroundImage.Scale(0.125, 0.125)
-                individualBackgroundImage.Translate(800, 200 + height * (7 - i))
 
-                ' Halfway through, create 2nd column by shifting over And up
+                spaceFactor = 18.0
+                If i = 0 Then
+                    spaceFactor = 0
+                End If
+
+                'Halfway through, create 2nd column by shifting over and up
                 If i > 7 Then
-                    individualForegroundImage.Translate(2400, height * 8)
-                    individualBackgroundImage.Translate(2400, height * 8)
+                    individualForegroundImage.Translate(400, heightOffset - (72.0 + spaceFactor) * (i - 8))
+                    individualBackgroundImage.Translate(400, heightOffset - (72.0 + spaceFactor) * (i - 8))
+                Else
+                    individualForegroundImage.Translate(100, heightOffset - (72.0 + spaceFactor) * i)
+                    individualBackgroundImage.Translate(100, heightOffset - (72.0 + spaceFactor) * i)
                 End If
 
                 docpage.Content.AddElement(individualBackgroundImage)
@@ -68,9 +76,9 @@ Namespace ExtendedGraphicStates
 
                 Dim m As New Matrix()
                 If i > 7 Then
-                    m = m.Translate(480, 750 - ((i - 8) * 100)) ' second column
+                   m = m.Translate(480, heightOffset - (72.0 + spaceFactor) * (i - 8))
                 Else
-                    m = m.Translate(180, 750 - (i * 100)) ' first column
+                    m = m.Translate(180, heightOffset - (72.0 + spaceFactor) * i)
                 End If
                 m = m.Scale(12.0, 12.0)
 
@@ -140,7 +148,6 @@ Namespace ExtendedGraphicStates
             Next
         End Sub
 
-
         Shared Sub Main(args As String())
             Console.WriteLine("ExtendedGraphicStates Sample:")
 
@@ -179,7 +186,6 @@ Namespace ExtendedGraphicStates
                 doc.Save(SaveFlags.Full, sOutput)
             End Using
         End Sub
-
     End Class
 End Namespace
 
