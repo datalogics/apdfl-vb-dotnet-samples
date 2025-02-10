@@ -53,7 +53,7 @@ Namespace OCRDocument
                     Using doc As Document = New Document(sInput)
                         For numPage As Integer = 0 To doc.NumPages - 1
                             Using page As Page = doc.GetPage(numPage)
-                                page.RecognizePageContents(page, ocrEngine)
+                                page.RecognizePageContents(doc, ocrEngine)
                             End Using
                         Next
                         doc.Save(SaveFlags.Full, sOutput)

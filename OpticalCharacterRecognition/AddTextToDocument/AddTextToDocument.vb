@@ -38,7 +38,7 @@ Namespace AddTextToDocument
             Using New Library()
                 Console.WriteLine("Initialized the library.")
 
-                Dim sInput As String = "scanned_images.pdf"
+                Dim sInput As String = Library.ResourceDirectory & "Sample_Input/scanned_images.pdf"
                 Dim sOutput As String = "AddTextToDocument-out.pdf"
 
                 If (args.Length > 0) Then
