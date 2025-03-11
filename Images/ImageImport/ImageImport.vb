@@ -1,11 +1,9 @@
 Imports Datalogics.PDFL
 
 
-''' This program demonstrates how to import images into a PDF file. The program runs without
-''' prompting you, And creates two PDF files, demonstrating how to import graphics from image files
-''' into a PDF file. One of the PDF output files Is the result of graphics imported from a multi-page TIF file.
+''' This sample demonstrates how to import an image into a PDF file.
 '''
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace ImageImport
     ' In this scenario the Image object is used alone to create a
