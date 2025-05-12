@@ -7,7 +7,7 @@ Imports Datalogics.PDFL
 ' This sample shows how to view And edit metadata for a PDF document. The metadata values appear on the Properties
 ' window in a PDF Viewer.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

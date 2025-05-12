@@ -8,7 +8,7 @@ Imports Datalogics.PDFL
 ' rectangles, And then finds the text that lines up within these rectangles And changes the
 ' color of each character that Is a part of the hyperlink.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

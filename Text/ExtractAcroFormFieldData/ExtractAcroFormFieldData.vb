@@ -6,7 +6,7 @@ Imports Datalogics.PDFL
 ' This sample extracts text from the AcroForm fields in a PDF
 ' document And saves the text to a file.
 '
-' Copyright (c) 2022-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2022-2025, Datalogics, Inc. All rights reserved.
 '
 '
 Namespace ExtractAcroFormFieldData

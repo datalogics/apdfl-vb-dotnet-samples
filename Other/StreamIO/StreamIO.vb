@@ -11,7 +11,7 @@ Imports Datalogics.PDFL
 '
 ' This program is similar to ImageFromStream, but in this example the PDF file streams hold text.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 Namespace StreamIO

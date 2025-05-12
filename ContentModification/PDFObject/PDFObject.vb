@@ -5,7 +5,7 @@ Imports Datalogics.PDFL
 ''' This sample demonstrates working with data objects in a PDF document. It examines the Objects and displays
 ''' information about them.  The sample extracts the dictionary for an object called URIAction and updates it using PDFObjects.
 ''' 
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '''
 ''' 
 ''' 

@@ -6,7 +6,7 @@ Imports Datalogics.PDFL
 ''' This sample demonstrates working with page labels in a PDF document. Each PDF file has a 
 ''' data structure that governs how page numbers appear, such as the font and type of numeral.
 ''' 
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace PageLabels
     Class PageLabels

@@ -7,7 +7,7 @@ Imports Datalogics.PDFL
 ''' prompts the user to enter the names of two PDF files, and then inserts the content 
 ''' of the second PDF file into the first PDF file and saves the result in a third PDF file.
 '''
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace MergePDF
     Class MergePDF

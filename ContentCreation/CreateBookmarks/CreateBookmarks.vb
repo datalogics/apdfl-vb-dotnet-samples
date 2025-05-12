@@ -17,7 +17,7 @@ Imports Datalogics.PDFL
 ''' parts of the page. The last three, Child1, 2, and 3, are dummy bookmarks that do not respond when you
 ''' click on them.  They demonstrate how to rearrange existing bookmarks.
 ''' 
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace CreateBookmarks
     Class CreateBookmarks

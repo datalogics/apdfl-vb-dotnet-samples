@@ -4,7 +4,7 @@ Imports Datalogics.PDFL
 ' Process a document using the optical recognition engine.
 ' Then place the image and the processed text in an output pdf
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 
