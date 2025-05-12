@@ -7,7 +7,7 @@ Imports Datalogics.PDFL
 ''' used to reduce the resolution of an image or series of images, to make them smaller. As a result
 ''' the process makes the PDF document smaller.
 '''
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace ImageResampling
     Friend Class ImageResampling

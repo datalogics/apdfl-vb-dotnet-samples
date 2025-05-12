@@ -5,7 +5,7 @@ Imports Datalogics.PDFL
 ' document that matches a user-supplied regular expression. When the sample finds the text it
 ' will redact the phrase from the output document.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 Namespace AddRegexRedaction

@@ -8,7 +8,7 @@ Imports System
 ''' An action Is added to the rectangle in the form of a hyperlink; if the viewer
 ''' clicks on the rectangle, it opens a Datalogics web page.
 '''
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace [Action]
     Class [Action]

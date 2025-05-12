@@ -13,7 +13,7 @@ Imports Datalogics.PDFL
  ' Note that the color profile is not embedded by default rather, the default is not to embed the color profile.
  ' The user must set the option to embed to True.
  ' 
- ' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+ ' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
  '
  '
 Namespace ColorConvertDocument

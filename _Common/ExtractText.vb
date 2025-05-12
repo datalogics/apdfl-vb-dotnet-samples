@@ -8,7 +8,7 @@ Imports Datalogics.PDFL
 ' found and what information is returned to the user.
 ' ===============================================================================
 '
-' Copyright (c) 2022-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2022-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

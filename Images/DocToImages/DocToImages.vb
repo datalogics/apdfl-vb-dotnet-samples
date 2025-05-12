@@ -4,7 +4,7 @@ Imports Datalogics.PDFL
 ''' one per page. You can also create a multi-page TIFF file. This program requires that you enter
 ''' formatting values manually at the command line. 
 '''
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace DocToImages
 

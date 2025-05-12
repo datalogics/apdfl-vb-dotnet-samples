@@ -5,7 +5,7 @@ Imports Datalogics.PDFL
 ' This program generates a PDF output file with a line shape (an angle) as an annotation to the file.
 ' The program defines the vertices for the outlines of the annotation, And the line And fill colors.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

@@ -5,7 +5,7 @@ Imports Datalogics.PDFL
 ' 
 ' This sample program adds six lines of Unicode text to a PDF file, in six different languages.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

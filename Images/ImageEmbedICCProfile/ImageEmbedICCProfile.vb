@@ -5,7 +5,7 @@ Imports Datalogics.PDFL
 ''' The program sets up how the output will be rendered And generates a TIF image file Or
 ''' series of TIF files as output.
 ''' 
-''' Copyright (c) 2007 - 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007 - 2025, Datalogics, Inc. All rights reserved.
 
 Namespace ImageEmbedICCProfile
     Public Class ExportDocumentImages

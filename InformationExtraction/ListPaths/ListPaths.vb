@@ -4,7 +4,7 @@ Imports Datalogics.PDFL
 ' This sample searches for And lists the contents of paths found in an existing PDF document.
 ' Paths in PDF documents, Or clipping paths, define the boundaries for art Or graphics.
 ' 
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

@@ -11,7 +11,7 @@ Imports Datalogics.PDFL
 ''' a National Weather Service web page, highlighting the word “Cloudy” wherever it appears and underlining
 ''' the word “Rain.”
 ''' 
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace UnderlinesAndHighlights
     Public Class UnderlinesAndHighlights

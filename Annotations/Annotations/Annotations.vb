@@ -4,7 +4,7 @@ Imports Datalogics.PDFL
 '
 'This sample demonstrates how To find And describe annotations In an existing PDF document.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

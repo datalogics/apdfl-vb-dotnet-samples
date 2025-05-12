@@ -8,7 +8,7 @@ Imports Datalogics.PDFL
 
 ''' This sample demonstrates creating a new PDF document with a Header and Footer.
 ''' 
-''' Copyright (c) 2022-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2022-2025, Datalogics, Inc. All rights reserved.
 
 Namespace AddHeaderFooter
     Class AddHeaderFooter
