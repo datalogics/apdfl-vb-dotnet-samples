@@ -6,7 +6,7 @@ Imports Datalogics.PDFL
 ' XML Paper Specification (XPS) is a standard document format that Microsoft created in 2006
 ' as an alternative to the PDF format.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 Namespace CreateDocFromXPS

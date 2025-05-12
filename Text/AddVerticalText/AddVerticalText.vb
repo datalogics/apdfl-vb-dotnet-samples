@@ -9,7 +9,7 @@ Imports Datalogics.PDFL
 ' The sample offers several rows of Unicode characters. The sample PDF file thus presents multiple columns
 ' of vertical text.  The characters appear in English as well as Mandarin, Japanese, And Korean.
 ' 
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 Namespace AddVerticalText

@@ -3,7 +3,7 @@ Imports Datalogics.PDFL
 
 ''' This sample demonstrates creating an Output Preview Image which Is used during Soft Proofing prior to printing to visualize combining different Colorants.
 ''' 
-''' Copyright (c) 2023 - 2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2023 - 2025, Datalogics, Inc. All rights reserved.
 
 Namespace OutputPreview
     Class OutputPreview

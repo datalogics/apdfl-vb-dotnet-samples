@@ -5,7 +5,7 @@ Imports Datalogics.PDFL
  '
  ' ConvertToOffice converts sample PDF documents to Office Documents.
  '
- ' Copyright (c) 2023 - 2024, Datalogics, Inc. All rights reserved.
+ ' Copyright (c) 2023 - 2025, Datalogics, Inc. All rights reserved.
  '
  '
 Namespace ConvertToOffice

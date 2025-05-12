@@ -7,7 +7,7 @@ Imports Datalogics.PDFL
 ' Use this program to create a New PDF file And add glyphs to the page,
 ' managing them by individual Glyph ID codes.
 ' 
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

@@ -13,7 +13,7 @@ Imports Datalogics.PDFL
 ''' into a single image on the page.
 '''
 ''' 
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace FlattenTransparency
     Class FlattenTransparency

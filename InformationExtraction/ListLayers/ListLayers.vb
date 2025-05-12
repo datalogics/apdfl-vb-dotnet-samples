@@ -3,7 +3,7 @@ Imports Datalogics.PDFL
 '
 ' This sample searches for And lists the names of the color layers found in a PDF document.
 '  
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

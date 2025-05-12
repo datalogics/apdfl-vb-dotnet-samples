@@ -9,7 +9,7 @@ Imports Datalogics.PDFL
 ' TempStoreType.Memory. The program can also set a maximum amount of RAM to use by
 ' applying a value to the DefaultTempStoreMemLimit property.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 Namespace MemoryFileSystem

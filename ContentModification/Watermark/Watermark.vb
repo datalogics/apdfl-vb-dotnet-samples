@@ -8,7 +8,7 @@ Imports Datalogics.PDFL
 ''' a set of photographs shown in a PDF file so that they cannot be easily duplicated without
 ''' the permission of the owner.
 ''' 
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace Watermark
     Class Watermark

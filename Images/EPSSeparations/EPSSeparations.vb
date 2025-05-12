@@ -3,7 +3,7 @@ Imports Datalogics.PDFL
 ''' This sample demonstrates working with color separations with Encapsulated PostScript (EPS) graphics
 ''' from a PDF file.
 '''
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace EPSSeparations
     Class EPSSeparations

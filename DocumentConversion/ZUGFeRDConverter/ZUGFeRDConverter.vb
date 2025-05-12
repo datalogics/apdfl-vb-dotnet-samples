@@ -5,7 +5,7 @@ Imports Datalogics.PDFL
  '
  ' This sample demonstrates converting the input PDF with the input Invoice ZUGFeRD XML to a ZUGFeRD compliant PDF.
  '
- ' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+ ' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
  '
  '
 Namespace ZUGFeRDConverter

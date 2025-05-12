@@ -6,7 +6,7 @@ Imports Datalogics.PDFL
 ' This sample extracts text and details of that text in a PDF
 ' document, prints to console, and saves the text to a JSON file.
 '
-' Copyright (c) 2022-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2022-2025, Datalogics, Inc. All rights reserved.
 '
 '
 Namespace ExtractTextPreservingStyleAndPositionInfo

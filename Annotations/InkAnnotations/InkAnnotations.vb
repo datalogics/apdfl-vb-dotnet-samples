@@ -5,7 +5,7 @@ Imports Datalogics.PDFL
 ' This sample creates And adds a New Ink annotation to a PDF document. An Ink annotation Is a freeform line,
 ' similar to what you would create with a pen, Or with a stylus on a mobile device.
 '
-' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 '
 '
 

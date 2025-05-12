@@ -4,7 +4,7 @@ Imports Datalogics.PDFL
 ''' change a feature, while a soft mask allows you to place an image on a page and define the level of 
 ''' transparency for that image.
 '''
-''' Copyright (c) 2007-2024, Datalogics, Inc. All rights reserved.
+''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
 Namespace ImageSoftMask
     Class ImageSoftMask
