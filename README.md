@@ -49,7 +49,7 @@ If you want to build for **Release**, use this command syntax instead:
 
 Change to the directory your sample built its executable to:
 
-```cd ./bin/Debug/net6.0/```
+```cd ./bin/Debug/net8.0/```
 
 Run the application by specifying the .dll file *(Note: the .dll file extension is the .NET executable for all platforms)*:
 
