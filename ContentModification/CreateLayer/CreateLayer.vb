@@ -1,16 +1,12 @@
-Imports System
 Imports Datalogics.PDFL
 
-
-
-
-''' This sample adds an Optional Content Group (a layer) to a PDF document and
-''' then adds an image to that layer. 
+''' This sample adds Optional Content Groups (layers) to a PDF document and
+''' then adds Content to those layers.
 ''' 
 ''' The related ChangeLayerConfiguration program makes layers visible or invisible.
 ''' 
-''' You can toggle back and forth to make the layer (the duck image) visible or invisible
-''' in the PDF file.
+''' You can toggle back and forth to make a layer visible or invisible
+''' in a PDF Viewer.
 '''
 ''' Copyright (c) 2007-2025, Datalogics, Inc. All rights reserved.
 
@@ -43,52 +39,107 @@ Namespace CreateLayer
                     Dim element As Element = pg.Content.GetElement(0)
 
                     If TypeOf element Is Image Then
-                        Dim img As Image = DirectCast(element, Image)
+                        Dim image As Image = DirectCast(element, Image)
+                        image.Matrix = New Matrix(image.Matrix.A * 0.5, 0, 0, image.Matrix.D * 0.5, image.Matrix.H, image.Matrix.V)
+
+                        Dim image2 As Image = New Image(Library.ResourceDirectory & "Sample_Input/Image.png")
+
+                        Dim text As Text = New Text()
+                        Dim matrix As Matrix = New Matrix()
+                        Dim font As Font = New Font("Helvetica")
+                        Dim graphicState As GraphicState = New GraphicState()
+                        Dim textState As TextState = New TextState()
+
+                        matrix.A = 42
+                        matrix.D = 22
+                        matrix.H = 72
+                        matrix.V = 72
+
+                        Dim textRun As TextRun = New TextRun("sample text", font, graphicState, textState, matrix)
+                        text.AddRun(TextRun)
+
+                        Dim text2 As Text = New Text()
+
+                        matrix.A = 30
+                        matrix.D = 30
+                        matrix.H = 72
+                        matrix.V = 288
+
+                        Dim textRun2 As TextRun = New TextRun("Text definition provided here", font, graphicState, textState, matrix)
+                        text2.AddRun(textRun2)
 
                         ' Containers, Forms and Annotations can be attached to an
                         ' OptionalContentGroup; other content (like Image) can
                         ' be made optional by placing it inside a Container
-                        Dim container As New Container()
-                        container.Content = New Content()
-                        container.Content.AddElement(img)
+                        Dim imageContainer As New Container()
+                        imageContainer.Content = New Content()
+                        imageContainer.Content.AddElement(image)
 
-                        ' We replace the Image with the Container
-                        ' (which now holds the image)
-                        pg.Content.RemoveElement(0)
-                        pg.UpdateContent()
+                        Dim imageContainer2 As New Container()
+                        imageContainer2.Content = New Content()
+                        imageContainer2.Content.AddElement(image2)
 
-                        pg.Content.AddElement(container)
-                        pg.UpdateContent()
+                        Dim textContainer As New Container()
+                        textContainer.Content = New Content()
+                        textContainer.Content.AddElement(text)
 
-                        ' We create a new OptionalContentGroup and place it in the
-                        ' OptionalContentConfig.Order array
-                        Dim ocg As OptionalContentGroup = CreateNewOptionalContentGroup(doc, "Rubber Ducky")
+                        Dim textContainer2 As New Container()
+                        textContainer2.Content = New Content()
+                        textContainer2.Content.AddElement(text2)
 
-                        ' Now we associate the Container with the OptionalContentGroup
-                        ' via an OptionalContentMembershipDict.  Note that we MUST
-                        ' update the Page's content afterwards.
-                        AssociateOCGWithContainer(doc, ocg, container)
-                        pg.UpdateContent()
+                        Using newDoc As New Document()
+                            Using newPage = newDoc.CreatePage(Document.BeforeFirstPage, pg.MediaBox)
+                                newPage.Content.AddElement(imageContainer)
+                                newPage.Content.AddElement(imageContainer2)
+                                newPage.Content.AddElement(textContainer)
+                                newPage.Content.AddElement(textContainer2)
 
-                        doc.Save(SaveFlags.Full, sOutput)
+                                ' We create new OptionalContentGroups and place them in the OptionalContentConfig.Order array
+                                Dim theStrings As String() = {"Rubber Ducky", "PNG Logo", "Example Text", "Text Definition"}
+                                Dim ocgs As List(Of OptionalContentGroup) = CreateNewOptionalContentGroups(newDoc, theStrings.ToList())
+
+                                AssociateOCGWithContainer(newDoc, ocgs(0), imageContainer)
+                                AssociateOCGWithContainer(newDoc, ocgs(1), imageContainer2)
+                                AssociateOCGWithContainer(newDoc, ocgs(2), textContainer)
+                                AssociateOCGWithContainer(newDoc, ocgs(3), textContainer2)
+
+                                newPage.UpdateContent()
+
+                                newDoc.Save(SaveFlags.Full, sOutput)
+                            End Using
+                        End Using
                     End If
                 End Using
             End Using
         End Sub
 
-        ' Create an OptionalContentGroup with a given name, and add it to the
-        ' default OptionalContentConfig's Order array.
-        Public Shared Function CreateNewOptionalContentGroup(doc As Document, name As String) As OptionalContentGroup
-            ' Create an OptionalContentGroup
-            Dim ocg As New OptionalContentGroup(doc, name)
+        Public Shared Function CreateNewOptionalContentGroups(doc As Document, names As List(Of String)) As List(Of OptionalContentGroup)
+            Dim ocgs As New List(Of OptionalContentGroup)
 
-            ' Add it to the Order array -- this is required so that the OptionalContentGroup
-            ' will appear in the 'Layers' control panel in a PDF Viewer.  It will appear in
-            ' the control panel with the name given in the OptionalContentGroup constructor.
+            Dim ocg As OptionalContentGroup = New OptionalContentGroup(doc, names(0))
+            Dim ocg2 As OptionalContentGroup = New OptionalContentGroup(doc, names(1))
+            Dim ocg3 As OptionalContentGroup = New OptionalContentGroup(doc, names(2))
+            Dim ocg4 As OptionalContentGroup = New OptionalContentGroup(doc, names(3))
+
+            ocgs.Add(ocg)
+            ocgs.Add(ocg2)
+            ocgs.Add(ocg3)
+            ocgs.Add(ocg4)
+
+            ' Add it to the Order array -- this Is required so that it will appear in the 'Layers' panel in a PDF Viewer.
             Dim order_list As OptionalContentOrderArray = doc.DefaultOptionalContentConfig.Order
-            order_list.Insert(order_list.Length, New OptionalContentOrderLeaf(ocg))
 
-            Return ocg
+            Dim grouping As OptionalContentOrderArray = New OptionalContentOrderArray(doc, "Image Grouping")
+            grouping.Add(New OptionalContentOrderLeaf(ocg))
+            grouping.Add(New OptionalContentOrderLeaf(ocg2))
+
+            Dim grouping2 As OptionalContentOrderArray = New OptionalContentOrderArray(doc, "Text Grouping")
+            grouping2.Add(New OptionalContentOrderLeaf(ocg3))
+            grouping2.Add(New OptionalContentOrderLeaf(ocg4))
+
+            order_list.Insert(order_list.Length, grouping)
+            order_list.Insert(order_list.Length, grouping2)
+            Return ocgs
         End Function
 
         ' Associate a Container with an OptionalContentGroup via an OptionalContentMembershipDict.
