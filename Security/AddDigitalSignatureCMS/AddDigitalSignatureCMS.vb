@@ -2,21 +2,21 @@ Imports Datalogics.PDFL
 
 '
 '
-' This sample shows how to add a Digital Signature
+' This sample shows how to add a CMS Digital Signature
 '
 ' Copyright (c) 2025, Datalogics, Inc. All rights reserved.
 '
 '
-Namespace AddDigitalSignature
-    Module AddDigitalSignature
+Namespace AddDigitalSignatureCMS
+    Module AddDigitalSignatureCMS
         Sub Main(args As String())
-            Console.WriteLine("AddDigitalSignature Sample:")
+            Console.WriteLine("AddDigitalSignatureCMS Sample:")
 
             Using New Library()
                 Console.WriteLine("Initialized the library.")
                 Dim sInput As String = Library.ResourceDirectory & "Sample_Input/SixPages.pdf"
                 Dim sLogo As String = Library.ResourceDirectory & "Sample_Input/ducky_alpha.tif"
-                Dim sOutput As String = "DigSig-out.pdf"
+                Dim sOutput As String = "DigSigCMS-out.pdf"
 
                 Dim sDERCert As String = Library.ResourceDirectory & "Sample_Input/Credentials/DER/RSA_certificate.der"
                 Dim sDERKey As String = Library.ResourceDirectory & "Sample_Input/Credentials/DER/RSA_privKey.der"
@@ -44,6 +44,10 @@ Namespace AddDigitalSignature
                         sigDoc.CredentialDataFormat = CredentialDataFmt.NonPFX
                         sigDoc.SetNonPfxSignerCert(sDERCert, 0, CredentialStorageFmt.OnDisk)
                         sigDoc.SetNonPfxPrivateKey(sDERKey, 0, CredentialStorageFmt.OnDisk)
+
+                        ' Set the signature type to be used.
+                        ' The available types are defined in the SignatureType enum. Default CMS.
+                        sigDoc.DocSignType = SignatureType.CMS
 
                         ' Setup the signer information
                         ' (Logo image is optional)
