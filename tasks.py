@@ -174,13 +174,13 @@ def get_public_packages():
     """Locations of packages that are live"""
     if platform.system() == 'Darwin':
         libraryPackagePath = '/Volumes/raid/products/released/APDFL/nuget/DotNET/for_apdfl_18.0.5Plus/approved/current'
-        sampleInputPackagePath = '/Volumes/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_18.0.4Plus/approved/current'
+        sampleInputPackagePath = '/Volumes/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_18.0.5Plus/approved/current'
     elif platform.system() == 'Windows':
         libraryPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\DotNET\\for_apdfl_18.0.5Plus\\approved\\current'
-        sampleInputPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\SampleInputFile\\for_apdfl_18.0.4Plus\\approved\\current'
+        sampleInputPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\SampleInputFile\\for_apdfl_18.0.5Plus\\approved\\current'
     else:
         libraryPackagePath = '/raid/products/released/APDFL/nuget/DotNET/for_apdfl_18.0.5Plus/approved/current'
-        sampleInputPackagePath = '/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_18.0.4Plus/approved/current'
+        sampleInputPackagePath = '/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_18.0.5Plus/approved/current'
 
     sampleInputPackages = [os.path.join(sampleInputPackagePath, item) for item in os.listdir(sampleInputPackagePath)]
 
