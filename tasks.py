@@ -174,14 +174,14 @@ def copy_packages_locally(libraryPackages):
 def get_public_packages():
     """Locations of packages that are live"""
     if platform.system() == 'Darwin':
-        libraryPackagePath = '/Volumes/raid/products/released/APDFL/nuget/DotNET/for_apdfl_18.0.5Plus/approved/current'
-        sampleInputPackagePath = '/Volumes/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_18.0.5Plus/approved/current'
+        libraryPackagePath = '/Volumes/raid/products/released/APDFL/nuget/DotNET/for_apdfl_21.0.0Plus/approved/current'
+        sampleInputPackagePath = '/Volumes/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_21.0.0Plus/approved/current'
     elif platform.system() == 'Windows':
-        libraryPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\DotNET\\for_apdfl_18.0.5Plus\\approved\\current'
-        sampleInputPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\SampleInputFile\\for_apdfl_18.0.5Plus\\approved\\current'
+        libraryPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\DotNET\\for_apdfl_21.0.0Plus\\approved\\current'
+        sampleInputPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\SampleInputFile\\for_apdfl_21.0.0Plus\\approved\\current'
     else:
-        libraryPackagePath = '/raid/products/released/APDFL/nuget/DotNET/for_apdfl_18.0.5Plus/approved/current'
-        sampleInputPackagePath = '/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_18.0.5Plus/approved/current'
+        libraryPackagePath = '/raid/products/released/APDFL/nuget/DotNET/for_apdfl_21.0.0Plus/approved/current'
+        sampleInputPackagePath = '/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_21.0.0Plus/approved/current'
 
     sampleInputPackages = [os.path.join(sampleInputPackagePath, item) for item in os.listdir(sampleInputPackagePath)]
 
@@ -191,11 +191,11 @@ def get_public_packages():
 def get_nightly_packages():
     """Locations of nightly packages. Note: These paths will only work on the nuget-builder build machine"""
     if platform.system() == 'Darwin':
-        libraryPackagePath = '/Volumes/raid/nuget-builder-samples-test-18'
+        libraryPackagePath = '/Volumes/raid/nuget-builder-samples-test'
     elif platform.system() == 'Windows':
-        libraryPackagePath = '\\\\ivy\\raid\\nuget-builder-samples-test-18'
+        libraryPackagePath = '\\\\ivy\\raid\\nuget-builder-samples-test'
     else:
-        libraryPackagePath = '/raid/nuget-builder-samples-test-18'
+        libraryPackagePath = '/raid/nuget-builder-samples-test'
 
     libraryPackages = [os.path.join(libraryPackagePath, item) for item in os.listdir(libraryPackagePath)]
 
