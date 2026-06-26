@@ -2,7 +2,7 @@
 def ENV_LOC=[:]
 pipeline {
     parameters {
-        choice(name: 'PLATFORM_FILTER', choices: ['all', 'windows-dotnet-samples', 'linux-dotnet-samples', 'mac-arm-dotnet-samples', 'mac-intel-dotnet-samples','linux-arm-dotnet-samples'], description: 'Run on specific platform')
+        choice(name: 'PLATFORM_FILTER', choices: ['all', 'windows-dotnet-samples', 'rocky9-dotnet-samples', 'mac-arm-dotnet-samples', 'mac-intel-dotnet-samples', 'rocky9-arm-dotnet-samples'], description: 'Run on specific platform')
         booleanParam defaultValue: false, description: 'Completely clean the workspace before building, including the Conan cache', name: 'CLEAN_WORKSPACE'
         booleanParam defaultValue: false, description: 'Run clean-samples', name: 'DISTCLEAN'
         booleanParam defaultValue: true, description: 'Run clean-nuget-cache', name: 'NUGETCLEAN'
@@ -17,7 +17,7 @@ pipeline {
         // Run branches between 0800 and 0830, depending on a hash of the job name
         // This means if there's more than one branch (a feature branch, maybe?), they
         // won't all start at the same time.
-        cron(env.BRANCH_NAME == "develop-18" ? 'H(0-30) 7 * * *' : '')
+        cron(env.BRANCH_NAME == "develop-21" ? 'H(0-30) 8 * * *' : '')
     }
     stages {
         stage('Matrix stage') {
@@ -32,7 +32,7 @@ pipeline {
                 axes {
                     axis {
                         name 'NODE'
-                        values 'windows-dotnet-samples', 'linux-dotnet-samples', 'mac-arm-dotnet-samples', 'mac-intel-dotnet-samples','linux-arm-dotnet-samples'
+                        values 'windows-dotnet-samples', 'rocky9-dotnet-samples', 'mac-arm-dotnet-samples', 'mac-intel-dotnet-samples','rocky9-arm-dotnet-samples'
                     }
                 }
                 stages {
