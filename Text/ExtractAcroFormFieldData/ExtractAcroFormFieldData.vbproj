@@ -3,12 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <RootNamespace>ExtractAcroFormFieldData</RootNamespace>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Adobe.PDF.Library.LM.NET" Version="18.*" />
+    <PackageReference Include="Adobe.PDF.Library.LM.NET" Version="21.*" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="../../_Common/ExtractText.vb" Link="ExtractText.vb" />
