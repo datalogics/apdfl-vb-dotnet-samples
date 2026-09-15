@@ -51,6 +51,7 @@ pipeline {
                     }
                 }
                 environment {
+                    APDFL_KEY = credentials('apdfl-rlm-key')
                     // NuGet honors these for restore, build, and
                     // 'dotnet nuget locals --clear all' alike.
                     NUGET_ROOT = setNugetRoot()
@@ -140,23 +141,23 @@ pipeline {
                             }
                         }
                     }
-                    stage('Build Samples') {
+                    stage('Build Samples using Nightly packages') {
                         steps {
                             echo "Build the samples ${NODE}"
                             script {
                                 if (isUnix()) {
                                     sh """. ${ENV_LOC[NODE]}/bin/activate
-                                          invoke build-samples
+                                          invoke build-samples --pkg-source Nightly
                                     """
                                 } else {
                                     bat """CALL ${ENV_LOC[NODE]}\\Scripts\\activate
-                                          invoke build-samples
+                                          invoke build-samples --pkg-source Nightly
                                     """
                                 }
                             }
                         }
                     }
-                    stage('Run Samples') {
+                    stage('Run Samples using Nightly packages') {
                         steps {
                             echo "Run the samples ${NODE}"
                             script {
@@ -172,7 +173,92 @@ pipeline {
                             }
                         }
                     }
-                    stage('Clean Samples After Run') {
+                    stage('Clean Samples After Nightly Run') {
+                        steps {
+                            echo "Clean ${NODE}"
+                            script {
+                                if (isUnix()) {
+                                    sh """. ${ENV_LOC[NODE]}/bin/activate
+                                          invoke clean-samples
+                                    """
+                                } else {
+                                    bat """CALL ${ENV_LOC[NODE]}\\Scripts\\activate
+                                          invoke clean-samples
+                                    """
+                                }
+                            }
+                        }
+                    }
+                    stage('Clean Nuget Packages Before Public Build') {
+                        when {
+                            expression {
+                                env.NODE != 'mac-intel-dotnet-samples'
+                            }
+                        }
+                        steps {
+                            echo "Clean ${NODE}"
+                            script {
+                                if (isUnix()) {
+                                    sh """. ${ENV_LOC[NODE]}/bin/activate
+                                          invoke clean-nuget-packages
+                                    """
+                                } else {
+                                    bat """CALL ${ENV_LOC[NODE]}\\Scripts\\activate
+                                          invoke clean-nuget-packages
+                                    """
+                                }
+                            }
+                        }
+                    }
+
+                    stage('Build Samples using Public packages') {
+                        when {
+                            expression {
+                                env.NODE != 'mac-intel-dotnet-samples'
+                            }
+                        }
+                        steps {
+                            echo "Build the samples ${NODE}"
+                            script {
+                                if (isUnix()) {
+                                    sh """. ${ENV_LOC[NODE]}/bin/activate
+                                          invoke build-samples --pkg-source Public
+                                    """
+                                } else {
+                                    bat """CALL ${ENV_LOC[NODE]}\\Scripts\\activate
+                                          invoke build-samples --pkg-source Public
+                                    """
+                                }
+                            }
+                        }
+                    }
+                    stage('Run Samples using Public packages') {
+                        when {
+                            expression {
+                                env.NODE != 'mac-intel-dotnet-samples'
+                            }
+                        }
+                        steps {
+                            echo "Run the samples ${NODE}"
+                            script {
+                                if (isUnix()) {
+                                    sh """. ${ENV_LOC[NODE]}/bin/activate
+                                          invoke run-samples
+                                    """
+                                } else {
+                                    bat """CALL ${ENV_LOC[NODE]}\\Scripts\\activate
+                                          invoke run-samples
+                                    """
+                                }
+                            }
+                        }
+                    }
+                    stage('Clean Samples After Public Run') {
+                        when {
+                            expression {
+                                env.NODE != 'mac-intel-dotnet-samples'
+                            }
+                        }
                         steps {
                             echo "Clean ${NODE}"
                             script {
