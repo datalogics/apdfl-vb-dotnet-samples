@@ -1,8 +1,9 @@
-from invoke import Collection, task
+from invoke import Collection, Exit, task
 from invoke.tasks import Task
 import platform
 import os
 import pathlib
+import subprocess
 import xml.etree.ElementTree as ET
 import shutil
 
@@ -80,28 +81,48 @@ samples_list = [
               'Text/TextExtract/'
               ]
 
+# The package sources build-samples can test against:
+#   Nightly - .nupkg files copied off the raid share into a local feed, with the
+#             samples repointed at Adobe.PDF.Library.NET, the non-license-managed
+#             package that exists only in that feed.
+#   Public  - resolved from nuget.org, keeping the license-managed package ids
+#             the samples already reference because those are the only ones
+#             published. Nothing is copied locally, so this is the pass that
+#             fails when a release is approved but not actually usable: a wrong
+#             or partial upload, an unlisted version, or a dependency package
+#             that never made it up (APDFL.SharedLibs, APDFL.SharedOfficeLibs).
+package_sources = ('Nightly', 'Public')
 
-# Given an absolute sample path, modify the csproj to pull 
-# a different version of the nuget package for testing
+nugetOrgFeed = 'https://api.nuget.org/v3/index.json'
+
+# Emptied before it is populated: the nightly and public packages share version
+# numbers and the samples float their PackageReference (Version="21.*"), so a
+# leftover .nupkg from an earlier run would outrank the one under test.
+nightlyFeedDir = 'packages_nightly'
+
+
+# Given an absolute sample path, add the SampleInput package the samples read
+# their input files from, and optionally repoint the Adobe.PDF.Library reference
+# at a different package. `package` is left None for the public pass: the
+# license-managed ids already in the vbproj are the ones published on nuget.org.
 def set_nuget_pkg_version(sample=None, package=None):
-    if package is None:
-        return
-    else:
-        tree = ET.parse(sample.absolute().as_posix())
+    tree = ET.parse(sample.absolute().as_posix())
+
+    if package is not None:
         elem = tree.findall(".//PackageReference")
         for entry in elem:
             if 'Adobe.PDF.Library' in entry.attrib.get('Include'):
                 entry.set('Include', package)
                 break
-        
-        # Add the SampleInput entry. We already have an object 
-        # in entry_copy just gotta change the values to SampleInput
-        new_entry = ET.Element('PackageReference')
-        new_entry.set('Include', 'Adobe.PDF.Library.SampleInput')
-        new_entry.set('Version', '1.*')
-        insert_elem = tree.findall(".//ItemGroup")
-        insert_elem[0].append(new_entry)
-        tree.write(sample)
+
+    # Add the SampleInput entry. We already have an object
+    # in entry_copy just gotta change the values to SampleInput
+    new_entry = ET.Element('PackageReference')
+    new_entry.set('Include', 'Adobe.PDF.Library.SampleInput')
+    new_entry.set('Version', '1.*')
+    insert_elem = tree.findall(".//ItemGroup")
+    insert_elem[0].append(new_entry)
+    tree.write(sample)
 
 @task()
 def clean_samples(ctx):
@@ -116,16 +137,57 @@ def clean_nuget_cache(ctx):
     ctx.run('dotnet nuget locals --clear all')
 
 @task()
-def build_samples(ctx, pkg_name='Adobe.PDF.Library.NET', config='Debug'):
-    """Builds the .NET samples"""
+def clean_nuget_packages(ctx):
+    """Clears extracted packages, keeping the http cache
+
+    Restore reuses an already-extracted package without consulting any source,
+    so the nightly and public passes have to run against an empty
+    global-packages folder to be sure of which bits they built against. This
+    matters most for the dependencies the two passes share by id and version --
+    APDFL.SharedLibs, Adobe.PDF.Library.Resources, SampleInput -- where a copy
+    cached from the nightly feed would hide a version that was never published.
+    The http cache is left alone so the nuget.org packages do not download twice.
+    """
+    ctx.run('dotnet nuget locals global-packages --clear')
+
+# Defaulted rather than required so a bare `invoke build-samples` keeps working
+# the way it always has, on the nightly packages. Invoke never treats an
+# argument that has a default as positional, so the value has to come in as a
+# flag: `invoke build-samples --pkg-source Public`.
+@task(help={'pkg_source': f'Packages to build against: {" or ".join(package_sources)}'})
+def build_samples(ctx, pkg_source='Nightly'):
+    """Builds the .NET samples against the Nightly or Public packages"""
+    # Checked before anything else: an unrecognized value used to fall through
+    # both branches and build against whatever packages were left in the tree,
+    # which passes without testing anything.
+    if pkg_source not in package_sources:
+        raise Exit(f'unknown package source {pkg_source!r}, '
+                   f'expected one of {list(package_sources)}')
+
     ctx.run('invoke clean-samples')
 
-    sourceFeed = 'https://api.nuget.org/v3/index.json'
+    # nuget.org is in both passes: the samples also pull SampleInput, SkiaSharp
+    # and the transitive dependencies of the Adobe packages from it. Passing
+    # --source explicitly means the public pass cannot fall back to a local or
+    # raid feed configured in NuGet.config.
+    sources = [nugetOrgFeed]
+    rewritePackage = None
 
-    if config == 'Release':
-        get_public_packages()
-    elif config == 'Debug':
-        get_nightly_packages()
+    if pkg_source == 'Nightly':
+        rewritePackage = 'Adobe.PDF.Library.NET'
+        nightlyFeed = make_package_dir(nightlyFeedDir)
+        get_nightly_packages(nightlyFeed)
+        sources.append(nightlyFeed)
+
+        # Checked here rather than left to the restore: an unmounted or empty
+        # raid share otherwise shows up as NU1101 on every sample, naming a
+        # package id instead of the share that failed to provide it.
+        if not any(pkg.startswith(f'{rewritePackage}.') for pkg in os.listdir(nightlyFeed)):
+            raise Exit(f'{rewritePackage} is not in the nightly feed at {nightlyFeed}. '
+                       f'The nightly share had packages but not that one -- '
+                       f'check what nuget-builder last published to it.')
+
+    sourceArgs = ' '.join(f'--source {source}' for source in sources)
 
     for sample in samples_list:
         full_path = os.path.join(os.getcwd(), sample)
@@ -138,17 +200,26 @@ def build_samples(ctx, pkg_name='Adobe.PDF.Library.NET', config='Debug'):
             with ctx.cd(full_path):
                 last_directory = os.path.basename(os.path.dirname(full_path))
                 full_name = full_path + last_directory + '.vbproj'
-                set_nuget_pkg_version(pathlib.Path(full_name), package=pkg_name)
+                set_nuget_pkg_version(pathlib.Path(full_name), package=rewritePackage)
 
-                packagesPath = os.getcwd()
-
-                ctx.run(f'dotnet build --source {sourceFeed} --source {packagesPath}')
+                ctx.run(f'dotnet build {sourceArgs}')
 
 
 @task()
 def run_samples(ctx):
     """Runs the .NET samples
+
+    The public packages are the license-managed ones, so a sample built against
+    them prompts on stdin for an evaluation key before it will do any work. In
+    CI stdin is not a terminal, the prompt reads EOF and the sample fails, so
+    the key comes in from the APDFL_KEY environment variable that the
+    Jenkinsfile fills from the apdfl-rlm-key credential. Left empty when the
+    variable is unset, which is what the nightly (non-license-managed) pass
+    wants: nothing prompts, and the unread input is discarded.
+
+    See _run_sample for why this does not go through ctx.run.
     """
+    apdfl_key = os.environ.get('APDFL_KEY', '')
     for sample in samples_list:
         full_path = os.path.join(os.getcwd(), sample)
         if 'DrawSeparations' in sample or 'DocToImages' in sample:
@@ -159,36 +230,65 @@ def run_samples(ctx):
         elif platform.system() == 'Linux' and 'ConvertToOffice' in sample:
             continue
         else:
-            with ctx.cd(full_path):
-                sample_name = os.path.basename(os.path.dirname(full_path))
-                if 'DrawSeparations' in sample_name:
-                    continue
-                ctx.run(f'dotnet run --no-build')
+            sample_name = os.path.basename(os.path.dirname(full_path))
+            if 'DrawSeparations' in sample_name:
+                continue
+            _run_sample(full_path, sample_name, apdfl_key)
 
 
-def copy_packages_locally(libraryPackages):
+def _run_sample(full_path, sample_name, apdfl_key):
+    """Runs one built sample, handing it the activation key on stdin.
+
+    Deliberately not ctx.run. invoke pumps a non-tty in_stream one byte per
+    10ms poll (see bytes_to_read in invoke/terminals.py), and it is hard to
+    reason about when the key actually lands. subprocess writes it in one go
+    and closes stdin behind it, so the second fgets() in the library's retry
+    loop sees EOF instead of blocking on an idle pipe until the pipeline's
+    four-hour timeout.
+
+    stdout and stderr stay inherited so sample output keeps streaming into the
+    build log, and stdbuf unbuffers it where we have it. That matters on a
+    failure: the licensing code flushes its prompt but not the diagnostics
+    after it, and an unhandled exception ends in abort(), which does not flush
+    stdio. Without this the RLM error explaining the failure is written into a
+    buffer and thrown away, which is why these runs have been so opaque.
+    """
+    command = ['dotnet', 'run', '--no-build']
+    if platform.system() == 'Linux' and shutil.which('stdbuf'):
+        command = ['stdbuf', '-o0', '-e0'] + command
+    print(f'{sample_name}: {" ".join(command)}', flush=True)
+    # Key goes in on stdin only, never on the echoed command line.
+    result = subprocess.run(command, cwd=full_path, shell=False,
+                            input=(apdfl_key + '\n').encode())
+    if result.returncode != 0:
+        raise Exit(f'{sample_name} exited {result.returncode}',
+                   code=result.returncode)
+
+
+def make_package_dir(name):
+    """Returns an absolute, empty local feed directory named `name`."""
+    packageDir = os.path.join(os.getcwd(), name)
+    shutil.rmtree(packageDir, ignore_errors=True)
+    os.makedirs(packageDir)
+    return packageDir
+
+
+def nupkgs_in(packagePath):
+    """Absolute paths of the .nupkg files in packagePath.
+
+    Filtered because these shares also hold symbol packages, checksums and
+    subdirectories, and shutil.copy raises on anything that is not a file.
+    """
+    return [os.path.join(packagePath, item) for item in os.listdir(packagePath)
+            if item.endswith('.nupkg')]
+
+
+def copy_packages_locally(libraryPackages, packageDir):
     for package in libraryPackages:
-        shutil.copy(package, os.getcwd())
+        shutil.copy(package, packageDir)
 
 
-def get_public_packages():
-    """Locations of packages that are live"""
-    if platform.system() == 'Darwin':
-        libraryPackagePath = '/Volumes/raid/products/released/APDFL/nuget/DotNET/for_apdfl_21.0.0Plus/approved/current'
-        sampleInputPackagePath = '/Volumes/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_21.0.0Plus/approved/current'
-    elif platform.system() == 'Windows':
-        libraryPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\DotNET\\for_apdfl_21.0.0Plus\\approved\\current'
-        sampleInputPackagePath = '\\\\ivy\\raid\\products\\released\\APDFL\\nuget\\SampleInputFile\\for_apdfl_21.0.0Plus\\approved\\current'
-    else:
-        libraryPackagePath = '/raid/products/released/APDFL/nuget/DotNET/for_apdfl_21.0.0Plus/approved/current'
-        sampleInputPackagePath = '/raid/products/released/APDFL/nuget/SampleInputFile/for_apdfl_21.0.0Plus/approved/current'
-
-    sampleInputPackages = [os.path.join(sampleInputPackagePath, item) for item in os.listdir(sampleInputPackagePath)]
-
-    copy_packages_locally(libraryPackages + sampleInputPackages)
-
-
-def get_nightly_packages():
+def get_nightly_packages(packageDir):
     """Locations of nightly packages. Note: These paths will only work on the nuget-builder build machine"""
     if platform.system() == 'Darwin':
         libraryPackagePath = '/Volumes/raid/nuget-builder-samples-test'
@@ -197,9 +297,16 @@ def get_nightly_packages():
     else:
         libraryPackagePath = '/raid/nuget-builder-samples-test'
 
-    libraryPackages = [os.path.join(libraryPackagePath, item) for item in os.listdir(libraryPackagePath)]
+    # An empty result used to be harmless, because packages accumulated in the
+    # repo root across runs and an earlier run's copy could satisfy the build.
+    # The feed is emptied every run now, so an unmounted share has to be loud.
+    packages = nupkgs_in(libraryPackagePath)
+    if not packages:
+        raise Exit(f'no .nupkg files found in {libraryPackagePath} -- '
+                   f'is the raid share mounted on this node?')
 
-    copy_packages_locally(libraryPackages)
+    copy_packages_locally(packages, packageDir)
+    print(f'... copied {len(packages)} packages into {packageDir}')
 
 
 tasks = []
